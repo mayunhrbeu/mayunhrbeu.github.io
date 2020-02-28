@@ -59,12 +59,37 @@
     </div>
     
     <div id="clock-box"> <span class="STYLE1"></span><font color="#FF4500">我知道你不会走，你知道我不会变</font> <span class="STYLE1"></span>
-      <div id="clock"></div>
+      <div id="clock"></div> <div style="margin-top: 10px;font-size:20px;">见面倒计时:<span id="day" style="color:red;font-size:20px;"></span>天</div>
     </div>
+    
     <canvas id="canvas" width="1100" height="680"></canvas>
   </div>
 </div>
 <script>
+     function  DateDiff(sDate1,  sDate2){    //sDate1和sDate2是xxxx-xx-xx格式  
+       var  aDate,  oDate1,  oDate2,  iDays  
+       aDate  =  sDate1.split("-")  
+       oDate1  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])    //转换为xx-xx-xxxx格式  
+       aDate  =  sDate2.split("-")  
+       oDate2  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])  
+       iDays  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24)    //把相差的毫秒数转换为天数  
+       return  iDays  
+   }  
+//获取当前时间，格式YYYY-MM-DD
+    function getNowFormatDate() {
+        var char = "-";
+        var nowDate = new Date();
+        var day = nowDate.getDate();
+        var month = nowDate.getMonth() + 1;//注意月份需要+1
+        var year = nowDate.getFullYear();
+        //补全0，并拼接
+        var currentdate = year + char + (month < 10 ? "0"+month:month) + char +(day < 10 ? "0"+day:day);
+        return currentdate;
+    }
+ 
+    DateDiff("2006-12-18","2006-12-19")
+        var a = document.getElementById('day');
+        a.innerHTML=DateDiff(getNowFormatDate(),"2020-03-20")
     </script>
 <script>
     (function () {
